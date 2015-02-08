@@ -1,5 +1,13 @@
 Assignment 4 Work Log
 
 Start: Sat, 7 Feb 2015 11:57:35 -0700
+End: Sat, 7 Feb 2015 16:56:14 -0700 
+Tasks: Got validation for multtable.php fully implemented and bug free. Most time spent on conditional printing of messages.
+
+Start: Sat, 7 Feb 2015 17:07:23 -0700
+End: Sat, 7 Feb 2015 19:20:51 -0700 
+Tasks: Finished multtable.php and ensured functionality with negative and positive integers (changed integer validation).
+
+Start: Sat, 7 Feb 2015 00:00:00 -0700
 End: Sat, 7 Feb 2015 00:00:00 -0700 
-Tasks: 
+Tasks:

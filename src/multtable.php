@@ -8,6 +8,22 @@ error_reporting(E_ALL);
   <head>
     <meta charset='UTF-8'/>
     <title>Multiplication Table</title>
+    <style>
+      table {
+        border: 1px solid black;
+        padding: 4px;
+      }
+      table td {
+        padding: 10px;
+        border: 1px solid black;
+      }
+      table th {
+        padding: 10px;
+        border: 1px solid black;
+        background: lightblue;
+        font-weight: normal;
+      }
+    </style>
   </head>
   
   <body>
@@ -16,11 +32,17 @@ error_reporting(E_ALL);
       $failedMinMaxParams = array();
       $failedParamsExist = array();
       
-      //Function definition found in comments of http://php.net/manual/en/function.is-int.php
-      function isInt($string) {
-        return ctype_digit(strval($string));
-      }
       
+      function isInt($string) {
+        if(!is_numeric($string) || strpbrk($string, '.')) {
+          return false;
+        }
+        
+        else {
+        return true;
+        }
+      }
+
       if(isset($_GET['min-multiplicand'])) {
         if(!isInt($_GET['min-multiplicand'])){
           $failedIntegerParams[] = '<p>The minimum multiplicand must be an integer.';
@@ -38,7 +60,7 @@ error_reporting(E_ALL);
           $failedIntegerParams[] = '<p>The maximum multiplicand must be an integer.';
         }
         else {
-          $maxMultiplicand = (int)$$_GET['max-multiplicand'];
+          $maxMultiplicand = (int)$_GET['max-multiplicand'];
         }
       }
       else {
@@ -103,6 +125,34 @@ error_reporting(E_ALL);
         
         exit();
       }
+      
+      $tableHeight = ($maxMultiplicand - $minMultiplicand + 2);
+      $tableWidth = ($maxMultiplier - $minMultiplier + 2);
+      
+      echo '<table>';
+      for($i = 0; $i < $tableHeight; $i++) {
+          echo '<tr> ';
+
+        for($j = 0; $j < $tableWidth; $j++) {
+          if($i == 0 && $j == 0) {
+            echo "<th>";
+          }
+          
+          elseif($i == 0 && $j > 0) {
+            echo "<th>$j";
+          }
+          
+          elseif($i > 0 && $j == 0) {
+            echo "<th>$i";
+          }
+          
+          else {
+          $currentCell = $j * $i;
+          echo "<td>$currentCell";
+          }
+        }
+      }
+      echo '</table>';
     ?>
   </body>
 </html>
